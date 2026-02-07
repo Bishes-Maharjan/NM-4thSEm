@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <math.h>
+
+float f(float x){
+    return x*x * exp(sqrt(x)) * sin(x);
+}
+
+int main()
+{
+    float a, h, fd1, fd2;
+    char q;
+
+    do {
+        printf("\nEnter the point at which derivatives are required: ");
+        scanf("%f", &a);
+
+        printf("\nEnter the value of h: ");
+        scanf("%f", &h);
+
+        fd1 = (f(a+h) - f(a-h)) / (2*h);
+        fd2 = (f(a+h) - 2*f(a) + f(a-h)) / (h*h);
+
+        printf("\nThe first and second derivatives at x=%f are %f and %f respectively.\n",
+               a, fd1, fd2);
+
+        printf("\nDo you want to input another value? (y/n): ");
+        scanf(" %c", &q);
+
+    } while (q == 'y');
+
+    return 0;
+}
